@@ -1,50 +1,112 @@
-# React + TypeScript + Vite
+# Générateur de Groupes Aléatoires
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Cette application permet aux enseignants de créer facilement des groupes aléatoires d'élèves pour des travaux de groupe, des activités ou des projets collaboratifs.
 
-Currently, two official plugins are available:
+## Fonctionnalités
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Création de groupes aléatoires à partir d'une liste d'élèves
+- Personnalisation du nombre d'élèves par groupe
+- Interface intuitive et conviviale
+- Export des groupes en format PDF ou CSV (coming soon)
+- Sauvegarde des listes d'élèves pour une utilisation ultérieure (coming soon)
 
-## Expanding the ESLint configuration
+## Installation
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+1. Clonez le repository :
 
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+```bash
+git clone https://github.com/votre-username/generateur-groupes.git
+cd generateur-groupes
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+2. Installez les dépendances :
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+```bash
+npm install
+# ou
+yarn install
 ```
+
+## Utilisation
+
+1. Lancez l'application :
+
+```bash
+npm run dev
+# ou
+yarn dev
+```
+
+2. Accédez à l'application dans votre navigateur à l'adresse `http://localhost:5173`
+
+### Guide d'utilisation rapide
+
+1. Définissez le nombre d'élèves souhaité par groupe
+2. Coller un liste d'élève dans le champ prévu à cet effet
+3. Cliquez sur "Générer les groupes"
+4. Exportez ou partagez les groupes générés (coming soon)
+
+## Configuration
+
+Pour personnaliser les paramètres de l'application, modifiez le fichier `.env` :
+
+```env
+VITE_MAX_GROUP_SIZE=6
+VITE_MIN_GROUP_SIZE=2
+```
+
+## Développement
+
+### Prérequis
+
+- Node.js (version 16 ou supérieure)
+- npm ou yarn
+
+### Structure du projet
+
+```
+src/
+├── components/    # Composants React
+├── hooks/        # Hooks personnalisés
+├── utils/        # Fonctions utilitaires
+└── types/        # Types TypeScript
+```
+
+### Scripts disponibles
+
+- `npm run dev` : Lance le serveur de développement
+- `npm run build` : Crée une version de production
+- `npm run test` : Lance les tests
+- `npm run lint` : Vérifie le code avec ESLint
+
+## Contribution
+
+Les contributions sont les bienvenues ! Pour contribuer :
+
+1. Forkez le projet
+2. Créez une branche pour votre fonctionnalité (`git checkout -b feature/nouvelle-fonctionnalite`)
+3. Committez vos changements (`git commit -m 'Ajout d'une nouvelle fonctionnalité'`)
+4. Poussez vers la branche (`git push origin feature/nouvelle-fonctionnalite`)
+5. Ouvrez une Pull Request
+
+### Guide de contribution
+
+- Respectez les conventions de code existantes
+- Ajoutez des tests pour les nouvelles fonctionnalités
+- Mettez à jour la documentation si nécessaire
+- Vérifiez que tous les tests passent avant de soumettre une PR
+
+## Auteur
+
+- [Raphael Sanchez](https://www.linkedin.com/in/raphael-sanchez-design/)
+
+## Support
+
+Si vous rencontrez des problèmes ou avez des questions :
+
+- Ouvrez une issue sur GitHub
+- Contactez l'équipe de développement à [hello@raphaelsanchez.design]
+
+## Licence
+
+Ce projet est sous licence MIT. Voir le fichier `LICENSE` pour plus de détails.
