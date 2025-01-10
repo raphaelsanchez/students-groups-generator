@@ -46,15 +46,6 @@ yarn dev
 3. Cliquez sur "Générer les groupes"
 4. Exportez ou partagez les groupes générés (coming soon)
 
-## Configuration
-
-Pour personnaliser les paramètres de l'application, modifiez le fichier `.env` :
-
-```env
-VITE_MAX_GROUP_SIZE=6
-VITE_MIN_GROUP_SIZE=2
-```
-
 ## Développement
 
 ### Prérequis

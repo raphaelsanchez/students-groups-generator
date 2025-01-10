@@ -14,7 +14,7 @@ interface GroupCardProps {
  * @param {GroupCardProps} props - Component props
  */
 export const GroupCard: React.FC<GroupCardProps> = ({ group, index }) => (
-  <div className=" bg-indigo-100 rounded-lg border border-indigo-600 overflow-hidden">
+  <div className=" bg-indigo-100 rounded-lg border mb-4 border-indigo-600 overflow-hidden">
     <h3 className="px-4 py-2 bg-indigo-600 text-white font-bold text-center mb-2">
       Group {index + 1}
     </h3>
