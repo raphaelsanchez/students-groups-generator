@@ -19,6 +19,7 @@ const GroupsGenerator: React.FC = () => {
     handleGroupSizeSelect,
     getStudentsList,
     handleDeleteGroup,
+    handleReshuffle,
   } = useGroups();
 
   switch (state.screen) {
@@ -50,6 +51,7 @@ const GroupsGenerator: React.FC = () => {
           groups={state.groups}
           onReset={handleReset}
           onDeleteGroup={handleDeleteGroup}
+          onReshuffle={handleReshuffle}
         />
       );
   }

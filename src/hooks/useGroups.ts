@@ -19,8 +19,12 @@ export const useGroups = () => {
     } = useAppState()
     const { error, handleStudentsChange, getStudentsList, validateStudents } =
         useStudents(state.students, setStudents)
-    const { calculatePossibleGroupSizes, createGroups, redistributeGroup } =
-        useGrouping()
+    const {
+        calculatePossibleGroupSizes,
+        createGroups,
+        redistributeGroup,
+        reshuffleGroups,
+    } = useGrouping()
 
     /** Handles the "Next" button click in the input form */
     const handleNext = useCallback(() => {
@@ -62,6 +66,11 @@ export const useGroups = () => {
         [state.groups, redistributeGroup, setGroups]
     )
 
+    const handleReshuffle = useCallback(() => {
+        const newGroups = reshuffleGroups(state.groups)
+        setGroups(newGroups)
+    }, [state.groups, reshuffleGroups, setGroups])
+
     return {
         state,
         error,
@@ -71,5 +80,6 @@ export const useGroups = () => {
         handleReset: reset,
         getStudentsList,
         handleDeleteGroup,
+        handleReshuffle,
     }
 }

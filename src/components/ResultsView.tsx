@@ -13,6 +13,8 @@ interface ResultsViewProps {
   onReset: () => void;
   /** Handler for deleting a group */
   onDeleteGroup: (index: number) => void;
+  /** Handler for reshuffling students */
+  onReshuffle: () => void;
 }
 
 /**
@@ -23,6 +25,7 @@ export const ResultsView: React.FC<ResultsViewProps> = ({
   groups,
   onReset,
   onDeleteGroup,
+  onReshuffle,
 }) => {
   const targetRef = React.useRef(null);
 
@@ -50,12 +53,35 @@ export const ResultsView: React.FC<ResultsViewProps> = ({
     });
 
   return (
-    <Card className="w-screen max-w-lg mx-auto mt-8 bg-white">
+    <Card className="w-screen max-w-xl mx-auto mt-8 bg-white">
       <CardHeader className="flex flex-row items-center justify-between">
         <CardTitle>Groups Results 🚀</CardTitle>
+        <Button
+          onClick={onReshuffle}
+          className="border border-indigo-600 text-indigo-600 flex items-center gap-2 flex-shrink"
+          type="button"
+          aria-label="Reshuffle students into new random groups"
+        >
+          <span className="sr-only">Reshuffle Students</span>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 512 512"
+            aria-hidden="true"
+            role="img"
+            focusable="false"
+          >
+            <title>Reshuffle icon</title>
+            <path
+              fill="currentColor"
+              d="M403.8 34.4c12-5 25.7-2.2 34.9 6.9l64 64c6 6 9.4 14.1 9.4 22.6s-3.4 16.6-9.4 22.6l-64 64c-9.2 9.2-22.9 11.9-34.9 6.9S384 204.8 384 191.8v-32h-32c-10.1 0-19.6 4.7-25.6 12.8L284 229.3L244 176l31.2-41.6C293.3 110.2 321.8 96 352 96h32V64c0-12.9 7.8-24.6 19.8-29.6M164 282.7l40 53.3l-31.2 41.6C154.7 401.8 126.2 416 96 416H32c-17.7 0-32-14.3-32-32s14.3-32 32-32h64c10.1 0 19.6-4.7 25.6-12.8zm274.6 188c-9.2 9.2-22.9 11.9-34.9 6.9S383.9 461 383.9 448v-32h-32c-30.2 0-58.7-14.2-76.8-38.4L121.6 172.8c-6-8.1-15.5-12.8-25.6-12.8H32c-17.7 0-32-14.3-32-32s14.3-32 32-32h64c30.2 0 58.7 14.2 76.8 38.4l153.6 204.8c6 8.1 15.5 12.8 25.6 12.8h32v-32c0-12.9 7.8-24.6 19.8-29.6s25.7-2.2 34.9 6.9l64 64c6 6 9.4 14.1 9.4 22.6s-3.4 16.6-9.4 22.6l-64 64z"
+            />
+          </svg>
+        </Button>
       </CardHeader>
       <CardContent>
-        <div ref={targetRef} className="mb-4 mx-auto max-w-md">
+        <div ref={targetRef} className="mb-4 mx-auto ">
           {groups.map((group, index) => (
             <GroupCard
               key={`group-${index}`}
@@ -86,6 +112,7 @@ export const ResultsView: React.FC<ResultsViewProps> = ({
               />
             </svg>
           </Button>
+
           <Button
             onClick={onReset}
             className="w-full border border-indigo-600 text-indigo-600 flex gap-2 items-center flex-1"

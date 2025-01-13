@@ -25,7 +25,7 @@ export const InputForm: React.FC<InputFormProps> = ({
   onStudentsChange,
   onNext,
 }) => (
-  <Card className="w-screen max-w-lg mx-auto bg-white">
+  <Card className="w-screen max-w-xl mx-auto bg-white">
     <CardHeader>
       <CardTitle>Students Groups Generator</CardTitle>
       <p>Generate random groups from a students list past below</p>

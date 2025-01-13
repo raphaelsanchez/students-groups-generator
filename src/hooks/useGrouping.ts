@@ -85,9 +85,24 @@ export const useGrouping = () => {
         []
     )
 
+    const reshuffleGroups = useCallback((groups: Group[]): Group[] => {
+        // Récupérer tous les étudiants
+        const allStudents = groups.flatMap((g) => g.students)
+        const shuffled = [...allStudents].sort(() => Math.random() - 0.5)
+
+        // Recréer les groupes avec la même structure
+        return groups.map((group, index) => ({
+            students: shuffled.slice(
+                index * group.students.length,
+                (index + 1) * group.students.length
+            ),
+        }))
+    }, [])
+
     return {
         calculatePossibleGroupSizes,
         createGroups,
         redistributeGroup,
+        reshuffleGroups,
     }
 }

@@ -14,7 +14,7 @@ export const GroupSizeSelector: React.FC<GroupSizeSelectorProps> = ({
   onSelect,
 }) => {
   return (
-    <Card className="w-screen max-w-lg mx-auto m-8 bg-white">
+    <Card className="w-screen max-w-xl mx-auto m-8 bg-white">
       <CardHeader>
         <CardTitle>Select Group Size</CardTitle>
         <p>
