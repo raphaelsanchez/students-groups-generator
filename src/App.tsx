@@ -20,6 +20,7 @@ const GroupsGenerator: React.FC = () => {
     getStudentsList,
     handleDeleteGroup,
     handleReshuffle,
+    handleFileImport,
   } = useGroups();
 
   switch (state.screen) {
@@ -30,6 +31,7 @@ const GroupsGenerator: React.FC = () => {
           error={error}
           onStudentsChange={handleStudentsChange}
           onNext={handleNext}
+          onFileImport={handleFileImport}
         />
       );
 

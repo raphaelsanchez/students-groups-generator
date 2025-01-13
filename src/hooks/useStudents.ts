@@ -40,11 +40,20 @@ export const useStudents = (
         return true
     }, [getStudentsList])
 
+    const handleFileImport = useCallback(
+        (studentsList: string[]) => {
+            setStudents(studentsList.join('\n'))
+            setError('')
+        },
+        [setStudents]
+    )
+
     return {
         students,
         error,
         handleStudentsChange,
         getStudentsList,
         validateStudents,
+        handleFileImport,
     }
 }

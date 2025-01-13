@@ -17,8 +17,13 @@ export const useGroups = () => {
         reset,
         setStudents,
     } = useAppState()
-    const { error, handleStudentsChange, getStudentsList, validateStudents } =
-        useStudents(state.students, setStudents)
+    const {
+        error,
+        handleStudentsChange,
+        getStudentsList,
+        validateStudents,
+        handleFileImport,
+    } = useStudents(state.students, setStudents)
     const {
         calculatePossibleGroupSizes,
         createGroups,
@@ -81,5 +86,6 @@ export const useGroups = () => {
         getStudentsList,
         handleDeleteGroup,
         handleReshuffle,
+        handleFileImport,
     }
 }
