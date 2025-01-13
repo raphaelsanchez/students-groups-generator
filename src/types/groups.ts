@@ -2,7 +2,9 @@
 export type Screen = 'input' | 'result'
 
 /** Type representing a group of students */
-export type Group = string[]
+export interface Group {
+    students: string[]
+}
 
 /** Interface representing the global state of the groups generator */
 export interface GroupsState {

@@ -30,7 +30,7 @@ export const ResultsView: React.FC<ResultsViewProps> = ({
       page: {
         margin: Margin.SMALL,
         format: "letter",
-        orientation: "portrait", // Using "l" instead of "landscape"
+        orientation: "portrait",
       },
       canvas: {
         mimeType: "image/png",

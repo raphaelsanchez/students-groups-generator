@@ -1,4 +1,6 @@
+import { GroupSizeSelector } from "@/components/GroupSizeSelector";
 import { InputForm } from "@/components/InputForm";
+import { LoadingView } from "@/components/LoadingView";
 import { ResultsView } from "@/components/ResultsView";
 import { useGroups } from "@/hooks/useGroups";
 import React from "react";
@@ -11,26 +13,37 @@ const GroupsGenerator: React.FC = () => {
   const {
     state,
     error,
-    handleSubmit,
+    handleNext,
     handleReset,
     handleStudentsChange,
-    handleNumberOfGroupsChange,
+    handleGroupSizeSelect,
   } = useGroups();
 
-  if (state.screen === "input") {
-    return (
-      <InputForm
-        numberOfGroups={state.numberOfGroups}
-        students={state.students}
-        error={error}
-        onNumberOfGroupsChange={handleNumberOfGroupsChange}
-        onStudentsChange={handleStudentsChange}
-        onSubmit={handleSubmit}
-      />
-    );
-  }
+  switch (state.screen) {
+    case "input":
+      return (
+        <InputForm
+          students={state.students}
+          error={error}
+          onStudentsChange={handleStudentsChange}
+          onNext={handleNext}
+        />
+      );
 
-  return <ResultsView groups={state.groups} onReset={handleReset} />;
+    case "group-size":
+      return (
+        <GroupSizeSelector
+          possibleSizes={state.possibleGroupSizes}
+          onSelect={handleGroupSizeSelect}
+        />
+      );
+
+    case "loading":
+      return <LoadingView />;
+
+    case "results":
+      return <ResultsView groups={state.groups} onReset={handleReset} />;
+  }
 };
 
 export default GroupsGenerator;
