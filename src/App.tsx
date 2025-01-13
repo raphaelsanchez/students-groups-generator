@@ -17,6 +17,8 @@ const GroupsGenerator: React.FC = () => {
     handleReset,
     handleStudentsChange,
     handleGroupSizeSelect,
+    getStudentsList,
+    handleDeleteGroup,
   } = useGroups();
 
   switch (state.screen) {
@@ -34,6 +36,7 @@ const GroupsGenerator: React.FC = () => {
       return (
         <GroupSizeSelector
           possibleSizes={state.possibleGroupSizes}
+          totalStudents={getStudentsList().length}
           onSelect={handleGroupSizeSelect}
         />
       );
@@ -42,7 +45,13 @@ const GroupsGenerator: React.FC = () => {
       return <LoadingView />;
 
     case "results":
-      return <ResultsView groups={state.groups} onReset={handleReset} />;
+      return (
+        <ResultsView
+          groups={state.groups}
+          onReset={handleReset}
+          onDeleteGroup={handleDeleteGroup}
+        />
+      );
   }
 };
 

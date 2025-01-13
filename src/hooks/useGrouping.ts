@@ -63,8 +63,31 @@ export const useGrouping = () => {
         []
     )
 
+    const redistributeGroup = useCallback(
+        (groups: Group[], groupIndexToRemove: number): Group[] => {
+            const newGroups = [...groups]
+            const studentsToRedistribute =
+                newGroups[groupIndexToRemove].students
+            newGroups.splice(groupIndexToRemove, 1)
+
+            // Redistribuer les étudiants un par un
+            studentsToRedistribute.forEach((student) => {
+                // Trouver le groupe le plus petit
+                const smallestGroupIndex = newGroups
+                    .map((g, index) => ({ size: g.students.length, index }))
+                    .sort((a, b) => a.size - b.size)[0].index
+
+                newGroups[smallestGroupIndex].students.push(student)
+            })
+
+            return newGroups
+        },
+        []
+    )
+
     return {
         calculatePossibleGroupSizes,
         createGroups,
+        redistributeGroup,
     }
 }

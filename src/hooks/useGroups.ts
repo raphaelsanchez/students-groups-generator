@@ -19,7 +19,8 @@ export const useGroups = () => {
     } = useAppState()
     const { error, handleStudentsChange, getStudentsList, validateStudents } =
         useStudents(state.students, setStudents)
-    const { calculatePossibleGroupSizes, createGroups } = useGrouping()
+    const { calculatePossibleGroupSizes, createGroups, redistributeGroup } =
+        useGrouping()
 
     /** Handles the "Next" button click in the input form */
     const handleNext = useCallback(() => {
@@ -53,6 +54,14 @@ export const useGroups = () => {
         [createGroups, getStudentsList, setGroups, setScreen]
     )
 
+    const handleDeleteGroup = useCallback(
+        (groupIndex: number) => {
+            const newGroups = redistributeGroup(state.groups, groupIndex)
+            setGroups(newGroups)
+        },
+        [state.groups, redistributeGroup, setGroups]
+    )
+
     return {
         state,
         error,
@@ -60,5 +69,7 @@ export const useGroups = () => {
         handleNext,
         handleGroupSizeSelect,
         handleReset: reset,
+        getStudentsList,
+        handleDeleteGroup,
     }
 }

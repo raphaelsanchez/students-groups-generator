@@ -11,6 +11,8 @@ interface ResultsViewProps {
   groups: Group[];
   /** Handler for resetting the form */
   onReset: () => void;
+  /** Handler for deleting a group */
+  onDeleteGroup: (index: number) => void;
 }
 
 /**
@@ -20,6 +22,7 @@ interface ResultsViewProps {
 export const ResultsView: React.FC<ResultsViewProps> = ({
   groups,
   onReset,
+  onDeleteGroup,
 }) => {
   const targetRef = React.useRef(null);
 
@@ -54,7 +57,12 @@ export const ResultsView: React.FC<ResultsViewProps> = ({
       <CardContent>
         <div ref={targetRef} className="mb-4 mx-auto max-w-md">
           {groups.map((group, index) => (
-            <GroupCard key={`group-${index}`} group={group} index={index} />
+            <GroupCard
+              key={`group-${index}`}
+              group={group}
+              index={index}
+              onDelete={groups.length > 2 ? onDeleteGroup : undefined}
+            />
           ))}
         </div>
 
